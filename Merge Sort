@@ -1,1 +1,9 @@
+[16,21,11,8,12,22] -> Let's rearrange this array with merge sort.
 
+[16,21,11]                [8,12,22] -> We made a split this array to 2 array,  If we had an array with odd numbers, the middle number would be separated by itself.
+[16]    [21,11]          [8]     [12,22]
+[11,16,21]          [8,12,22] -> We recombine the separated sequences with the smaller numbers at the beginning.
+[8,11,12,16,21,22]
+
+Question: What is the Big-O notation of this array?
+Answer: Each time we merge or separate, we perform O(n) operations. Since it is halved each time, it becomes 2^x:n -> logn:x, which becomes Big-O (nlogn).
