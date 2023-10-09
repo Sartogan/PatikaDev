@@ -1,0 +1,6 @@
+[7,5,1,8,3,6,0,9,4,2] -> Let's rearrange this array with Binary Search Tree. We will begin with the number of 7. İf number what is comes from it, smaller than it  will be written on the left side, if it is bigger it will be written on the right side.
+  Here the root is the number 7. To the right of the number 7 is the number 8 and to the right of the number 8 is the number 9
+  To the left of the number 7 is 5, to the left of the number 5 is 1 and to the right of the number 5 is 6.
+   To the left of the number 5 is the number 1, to the left of the number 1 is the number 0, and to the right of the number 1 is the number 3.
+   There is 2 to the left of the number 3 and 4 to the right.
+                
