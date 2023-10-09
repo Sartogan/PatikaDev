@@ -1,0 +1,28 @@
+[22,27,16,2,18,6] -> Rearrange the array with Insertion sort.
+Let's consider the numbers as binary and bring the smaller number to the beginning.
+
+[22, |16| |27| 2,18,6] -> We swapped the 16 and 27 because 16 smaller than 27.
+[ |16| |22| 27,2,18,6]
+[16, 22 |2| |27| 18,6]
+[16, |2| |22| 27,18,6]
+[ |2| |16| 22,27,18,6]
+[2,16,22, |18| |27| 6]
+[2,16, |18| |22| 27,6]
+[2,16,18,22, |6| |27| ]
+[2,16,18, |6| |22| 27]
+[2,16, |6| |18| 22,27]
+[2, |6| |16| 18,22,27] -> Last step of the Array with Insertion sort.
+
+Big-O notation of this Array is: n.(n+1)/2: O(n^2) hence n:6 O(36)
+
+Question: After the array is sorted, which of the worst, best and average cases does the number 18 fall into?
+Answer:  Worst case because 18 is closer to the end of the array.
+
+[7,3,5,8,2,9,4,15,6] Write the first 4 steps of the sequence according to the selection sort.
+
+min:2 [ |2| 3,5,8 |7|,9,4,15,6] -> we swapped the 7 and 2 because the 2 is more smaller than 7,the difference from the insertion sort is that the numbers are replaced by each other.
+min:4 [2,3 |4| 8,7,9 |5|,15,6]  
+min:5 [2,3,4 |5| 7,9 |8| 15,6]
+min:6 [2,3,4,5 |6| 9,8,15 |7|]
+
+
