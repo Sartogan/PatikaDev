@@ -1,0 +1,14 @@
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\bin\Debug\net10.0\ToDoApp.exe
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\bin\Debug\net10.0\ToDoApp.deps.json
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\bin\Debug\net10.0\ToDoApp.runtimeconfig.json
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\bin\Debug\net10.0\ToDoApp.dll
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\bin\Debug\net10.0\ToDoApp.pdb
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\obj\Debug\net10.0\ToDoApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\obj\Debug\net10.0\ToDoApp.AssemblyInfoInputs.cache
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\obj\Debug\net10.0\ToDoApp.AssemblyInfo.cs
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\obj\Debug\net10.0\ToDoApp.csproj.CoreCompileInputs.cache
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\obj\Debug\net10.0\ToDoApp.dll
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\obj\Debug\net10.0\refint\ToDoApp.dll
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\obj\Debug\net10.0\ToDoApp.pdb
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\obj\Debug\net10.0\ToDoApp.genruntimeconfig.cache
+C:\Users\Yusuf\Desktop\Patika.Dev C#\ToDoApp\ToDoApp\obj\Debug\net10.0\ref\ToDoApp.dll
