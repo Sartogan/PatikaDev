@@ -1,0 +1,197 @@
+using System;
+using PhoneBookApp.Models;
+using PhoneBookApp.Services;
+
+namespace PhoneBookApp
+{
+
+    class Program
+    {
+        static void Main()
+        {
+            PhoneBook phoneBook = new PhoneBook();
+
+            while (true)
+            {
+                Console.WriteLine("Lütfen yapmak istediğiniz işlemi seçiniz :)");
+                Console.WriteLine("*******************************************");
+                Console.WriteLine("(1) Yeni Numara Kaydetmek");
+                Console.WriteLine("(2) Varolan Numarayı Silmek");
+                Console.WriteLine("(3) Varolan Numarayı Güncelleme");
+                Console.WriteLine("(4) Rehberi Listelemek");
+                Console.WriteLine("(5) Rehberde Arama Yapmak");
+                Console.WriteLine("(0) Çıkış");
+
+                var choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        Console.Write("İsim: ");
+                        var fname = Console.ReadLine();
+                        Console.Write("Soyisim: ");
+                        var lname = Console.ReadLine();
+                        Console.Write("Telefon: ");
+                        var phone = Console.ReadLine();
+                        phoneBook.AddContact(fname, lname, phone);
+                        break;
+
+                    case "2":
+                        Console.Write("Silmek istediğiniz kişinin adı/soyadı: ");
+                        var delKey = Console.ReadLine();
+                        phoneBook.DeleteContact(delKey);
+                        break;
+
+                    case "3":
+                        Console.Write("Güncellemek istediğiniz kişinin adı/soyadı: ");
+                        var updKey = Console.ReadLine();
+                        phoneBook.UpdateContact(updKey);
+                        break;
+
+                    case "4":
+                        Console.WriteLine("Listeleme yönü seçiniz: (1) A-Z (2) Z-A");
+                        var order = Console.ReadLine();
+                        phoneBook.ListContacts(order == "1");
+                        break;
+
+                    case "5":
+                        Console.WriteLine("Arama tipi seçiniz: (1) İsim/Soyisim (2) Telefon");
+                        var type = int.Parse(Console.ReadLine());
+                        Console.Write("Arama kriteri: ");
+                        var keyword = Console.ReadLine();
+                        phoneBook.SearchContacts(type, keyword);
+                        break;
+
+                    case "0":
+                        return;
+
+                    default:
+                        Console.WriteLine("Geçersiz seçim.");
+                        break;
+                }
+            }
+        }
+    }
+}
+namespace PhoneBookApp.Models
+{
+
+
+    public class Contact
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
+
+        public override string ToString()
+        {
+            return $"isim: {FirstName} Soyisim: {LastName} Telefon Numarası: {PhoneNumber}";
+        }
+    }
+}
+namespace PhoneBookApp.Services
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    public class PhoneBook
+    {
+        private List<Contact> contacts = new List<Contact>();
+
+        public PhoneBook()
+        {
+            contacts.Add(new Contact { FirstName = "Ali", LastName = "Yılmaz", PhoneNumber = "5551112233" });
+            contacts.Add(new Contact { FirstName = "Ayşe", LastName = "Demir", PhoneNumber = "5552223344" });
+            contacts.Add(new Contact { FirstName = "Mehmet", LastName = "Kaya", PhoneNumber = "5553334455" });
+            contacts.Add(new Contact { FirstName = "Zeynep", LastName = "Çelik", PhoneNumber = "5554445566" });
+            contacts.Add(new Contact { FirstName = "Ahmet", LastName = "Şahin", PhoneNumber = "5555556677" });
+        }
+
+        public void AddContact(string firstName, string lastName, string phoneNumber)
+        {
+            contacts.Add(new Contact { FirstName = firstName, LastName = lastName, PhoneNumber = phoneNumber });
+            Console.WriteLine("Kayıt eklendi.");
+        }
+
+        public void DeleteContact(string keyword)
+        {
+            var contact = contacts.FirstOrDefault(c => c.FirstName.Equals(keyword, StringComparison.OrdinalIgnoreCase)
+                                                    || c.LastName.Equals(keyword, StringComparison.OrdinalIgnoreCase));
+            if (contact == null)
+            {
+                Console.WriteLine("Aradığınız kriterlere uygun veri bulunamadı.");
+                return;
+            }
+
+            Console.WriteLine($"{contact.FirstName} {contact.LastName} isimli kişi silinmek üzere, onaylıyor musunuz? (y/n)");
+            var confirm = Console.ReadLine();
+            if (confirm?.ToLower() == "y")
+            {
+                contacts.Remove(contact);
+                Console.WriteLine("Kişi silindi.");
+            }
+            else
+            {
+                Console.WriteLine("Silme işlemi iptal edildi.");
+            }
+        }
+
+        public void UpdateContact(string keyword)
+        {
+            var contact = contacts.FirstOrDefault(c => c.FirstName.Equals(keyword, StringComparison.OrdinalIgnoreCase)
+                                                    || c.LastName.Equals(keyword, StringComparison.OrdinalIgnoreCase));
+            if (contact == null)
+            {
+                Console.WriteLine("Aradığınız kriterlere uygun veri bulunamadı.");
+                return;
+            }
+
+            Console.Write("Yeni isim: ");
+            contact.FirstName = Console.ReadLine();
+            Console.Write("Yeni soyisim: ");
+            contact.LastName = Console.ReadLine();
+            Console.Write("Yeni telefon: ");
+            contact.PhoneNumber = Console.ReadLine();
+
+            Console.WriteLine("Kişi güncellendi.");
+        }
+
+        public void ListContacts(bool ascending = true)
+        {
+            Console.WriteLine("Telefon Rehberi");
+            Console.WriteLine("**********************************************");
+
+            var sorted = ascending
+                ? contacts.OrderBy(c => c.FirstName).ToList()
+                : contacts.OrderByDescending(c => c.FirstName).ToList();
+
+            foreach (var c in sorted)
+            {
+                Console.WriteLine(c);
+            }
+        }
+
+        public void SearchContacts(int type, string keyword)
+        {
+            IEnumerable<Contact> results;
+            if (type == 1) 
+            {
+                results = contacts.Where(c => c.FirstName.Contains(keyword, StringComparison.OrdinalIgnoreCase)
+                                           || c.LastName.Contains(keyword, StringComparison.OrdinalIgnoreCase));
+            }
+            else 
+            {
+                results = contacts.Where(c => c.PhoneNumber.Contains(keyword));
+            }
+
+            Console.WriteLine("Arama Sonuçlarınız:");
+            Console.WriteLine("**********************************************");
+            foreach (var c in results)
+            {
+                Console.WriteLine(c);
+            }
+        }
+    }
+}
+
